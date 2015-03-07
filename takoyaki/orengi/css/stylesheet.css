@@ -1,0 +1,277 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+/*midatlantic@lambdaphiepsilon.org*/
+
+div#space
+{
+	background: url("img/space.jpg") no-repeat center center fixed;
+	height: 500px;
+	width: auto;
+	background-size: cover;
+	padding: 10px;
+}
+
+div#safari
+{
+	background: url("img/plain2.jpg") no-repeat center center;
+	height: 445px;
+	width: auto;
+	background-size: cover;
+	padding: 10px;
+}
+
+h1#space{
+	display: inline-block;
+	margin: 0;
+}
+
+h1#safari{
+	display: inline-block;
+	margin: 0;
+}
+
+#message{
+	display: inline-block;
+	float: right;
+}
+
+body{
+
+	font-family: Roboto;
+	color: white;
+	padding: 0;
+	margin: 0;
+
+}
+
+div{
+	padding: 0px;
+}
+
+img{
+	padding: 0px;
+}
+
+div.circle{
+
+	display: inline-block;
+	border-radius: 50%;
+	text-align: center;
+	background-color: white;
+	margin: 12px;
+	vertical-align: middle;
+}
+
+div#mercury{
+
+	height: 40px;
+	width: 40px;
+	background: url("img/mercury.png");
+	background-size: contain;	
+	/*height: 12px;
+	width: 12px;*/
+}
+div#venus{
+
+	width: 50px;
+	height: 50px;
+	background: url("img/venus.png");
+	background-size: contain;
+	/*height: 28px;
+	width: 28px;*/
+}
+div#earth{
+
+	height: 60px;
+	width: 60px;
+	background: url("img/earth.png");
+	background-size: contain;
+	/*height: 29px;
+	width: 29px;*/
+}
+div#mars{
+
+	height: 45px;
+	width: 45px;
+	background: url("img/mars.png");
+	background-size: contain;
+	/*height: 16px;
+	width: 16px;*/
+}
+div#jupiter{
+
+	height: 250px;
+	width: 250px;
+	background: url("img/jupiter.png");
+	background-size: contain;
+	/*height: 340px;
+	width: 340px;*/
+}
+div#saturn{
+
+	height: 350px;
+	width: 350px;
+	background: url("img/saturn.png") center;
+	background-size: 73%;
+	background-repeat: no-repeat;
+	margin: -20px;
+	/*height: 288px;
+	width: 288px;*/
+}
+div#uranus{
+
+	height: 100px;
+	width: 100px;
+	background: url("img/uranus.png");
+	background-size: contain;
+	/*height: 122px;
+	width: 122px;*/
+}
+div#neptune{
+
+	height: 90px;
+	width: 90px;
+	background: url("img/neptune.png");
+	background-size: contain;
+	/*height: 118px;
+	width: 118px;*/
+}
+div#pluto{
+
+	height: 30px;
+	width: 30px;
+	background: url("img/pluto.png");
+	background-size: contain;
+	/*height: 5px;
+	width: 5px;*/
+}
+
+
+div.verticalContainer{
+
+	height: auto;
+	width: auto;
+	/*margin: auto;*//*margin auto doesnt mean shit or do shit here*/
+	vertical-align: middle;
+	display: table-cell;/*FOR ALIGNING VERTICALLY (vertical-align WORKS WITH A TABLE-CELL DISLAY)*/
+}
+
+div.horizontalContainer{
+
+	height: auto;
+	width: auto;
+	/*vertical-align: middle;*//*vartically align doesnt mean shit or do shit here*/
+	display: table;/*FOR ALIGNING HORIZONTALLY (MARGIN AUTO WORKS WITH A TABLE DISLAY)*/
+	margin: auto;
+}
+
+div.bottomContainer{
+
+	width: auto;
+	height: auto;
+	/*margin: auto;*//*margin auto doesnt mean shit or do shit here*/
+	vertical-align: bottom;
+	display: table-cell;/*FOR ALIGNING VERTICALLY (vertical-align WORKS WITH A TABLE-CELL DISLAY)*/
+}
+
+.hidden{
+
+	visibility: hidden;
+}
+
+
+img.animal{
+
+	display: inline-block;
+	text-align: center;
+	background-color: none;
+	margin: 12px;
+	/*vertical-align: middle;*/
+}
+
+img#giraffe{
+
+	height: 290px;
+	width: auto;
+}
+
+img#elephant{
+
+	height: 200px;
+	width: auto;
+}
+
+img#zebra{
+
+	height: 150px;
+	width: auto;
+}
+
+
+div.shiroSpace{
+
+	background-color: white;
+	height: 50px;
+	width: auto;
+}
+
+div.kuroSpace{
+
+	background-color: black;
+	height: 50px;
+	width: auto;
+}
+
+div.akaSpace{
+
+	background-color: red;
+	height: 50px;
+	width: auto;
+}
+
+div.orengiSpace{
+
+	background-color: rgb(255,131,0);
+	height: 50px;
+	width: auto;
+}
+
+div.kiiroSpace{
+
+	background-color: yellow;
+	height: 50px;
+	width: auto;
+}
+
+div.midoriSpace{
+
+	background-color: lime;
+	height: 50px;
+	width: auto;
+}
+
+div.aoSpace{
+
+	background-color: blue;
+	height: 50px;
+	width: auto;
+}
+
+div.murasakiSpace{
+
+	background-color: #8c489f;
+	height: 50px;
+	width: auto;
+}
+
+footer{
+
+	color: white;
+	font-style: italic;
+	background-color: black;
+}
+
+span{
+
+	font-size: 32px;
+	color: white;/*maybe lime*/
+}
