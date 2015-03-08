@@ -4,12 +4,12 @@ $(document).ready(function(){
 	var animals = ["giraffe", "elephant", "zebra"]; 
 	var num_animals = animals.length;
 
-	next_animal = $("span#targetSafari").html();
+	next_animal = $("div#safari span#target").html();
 
 	$("img.animal").click(function(){
 
 		var animal = $(this).attr('id');
-		var target = $("span#targetSafari").html();//.toLowerCase();
+		var target = $("div#safari span#target").html();//.toLowerCase();
 
 		console.log("clicked "+animal);
 
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			//console.log("done");
 			next_animal = animals[i-1];
 
-			$("span#targetSafari").text(next_animal);
+			$("div#safari span#target").text(next_animal);
 			var src = "css/img/"+animal+".png";
 			$(this).attr("src", src);
 		}
@@ -34,7 +34,7 @@ $(document).ready(function(){
 		
 		//console.log(this);
 		var animal = $(this).attr('id');
-		var target = $("span#targetSafari").html();//.toLowerCase();
+		var target = $("div#safari span#target").html();//.toLowerCase();
 		var src = "css/img/"+animal;
 
 		console.log(animal);

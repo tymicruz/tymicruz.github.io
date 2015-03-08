@@ -5,12 +5,12 @@ $(document).ready(function(){
 	var planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune","pluto"]; 
 	var num_planets = planets.length;
 
-	next_planet = $("span#targetSpace").html();
+	next_planet = $("div#space span#target").html();
 
 	$("div.circle").click(function(){
 
 		var planet = $(this).attr('id');
-		var target = $("span#targetSpace").html();//.toLowerCase();
+		var target = $("div#space span#target").html();//.toLowerCase();
 
 		console.log("clicked "+planet);
 
@@ -25,7 +25,7 @@ $(document).ready(function(){
 			//console.log("done");
 			next_planet = planets[i-1];
 
-			$("span#targetSpace").text(next_planet);
+			$("div#space span#target").text(next_planet);
 			var url = "url(css/img/"+planet+".png)";
 			$(this).css("background-image", url);
 		}
@@ -35,7 +35,7 @@ $(document).ready(function(){
 		
 		//console.log(this);
 		var planet = $(this).attr('id');
-		var target = $("span#targetSpace").html();//.toLowerCase();
+		var target = $("div#space span#target").html();//.toLowerCase();
 
 		//console.log(target);
 
