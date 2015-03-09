@@ -12,14 +12,28 @@ div#space
 
 div#safari
 {
-	background: url("img/plain2.jpg") no-repeat center center;
+	background: url("img/plain.jpg") no-repeat center center;
 	height: 445px;
 	width: auto;
 	background-size: cover;
 	padding: 10px;
 }
 
-h1#space{
+div#shapes
+{
+	background: url("img/pyramids.jpg") no-repeat center center;
+	height: 500px;
+	width: auto;
+	background-size: cover;
+	padding: 10px;
+}
+
+h1{
+	display: inline-block;
+	margin: 0;
+}
+
+/*h1#space{
 	display: inline-block;
 	margin: 0;
 }
@@ -27,7 +41,7 @@ h1#space{
 h1#safari{
 	display: inline-block;
 	margin: 0;
-}
+}*/
 
 #message{
 	display: inline-block;
@@ -207,6 +221,39 @@ img#zebra{
 }
 
 
+img.shape{
+
+	display: inline-block;
+	text-align: center;
+	background-color: none;
+	margin: 12px;
+	/*vertical-align: middle;*/
+}
+
+img#star{
+
+	height: 250px;
+	width: auto;
+}
+
+img#square{
+
+	height: 250px;
+	width: auto;
+}
+
+img#triangle{
+
+	height: 250px;
+	width: auto;
+}
+
+img#circle{
+
+	height: 250px;
+	width: auto;
+}
+
 div.shiroSpace{
 
 	background-color: white;
@@ -261,6 +308,15 @@ div.murasakiSpace{
 	background-color: #8c489f;
 	height: 50px;
 	width: auto;
+}
+
+div.colorSpace
+{
+	text-align: center;
+	 -webkit-transition: height 0.1s ease;
+    -moz-transition: height 0.1s ease;
+    -o-transition: height 0.1s ease;
+    transition: height 0.1s ease;
 }
 
 footer{
