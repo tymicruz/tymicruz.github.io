@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html ng-app="ojc">
+
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title>#OJC</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+  <style type="text/css">
+
+    .row{
+      background-color: rgb(200, 255, 200);
+      color: black;
+      text-align: center;
+      border-color: black;
+      border-width: 10px;
+      height: 300px;
+      
+    }
+
+    .hide {
+      visibility: none;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+
+
+  </style>
+
+</head>   
+
+
+<body ng-controller="OjcController as ojc">
+
+    <div class="row">
+
+      <div ng-repeat="member in ojc.members" class="col-sm-4 col-xs-12">
+       
+        <button type="button" class="btn btn-warning" ng-click="ojc.ChangePic(member.name)">{{member.name}}</button>
+        
+        <div class="thumbnail img-container" >
+          <img class="img-responsive" ng-click="ojc.ChangePic(member.name)" id="{{member.name}}" ng-src="{{'imgs/' + member.images['thumbnail']}}"/>       
+        </div>
+
+      </div>
+    
+    </div>
+
+  <script type="text/javascript" src="js/angular.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
