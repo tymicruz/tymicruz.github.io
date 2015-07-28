@@ -51,12 +51,12 @@
 var ojc= [
 	{
 		name: "Enoka",
-		images : {thumbnail: "enokaojc.jpg", regular: "enoka.jpg"},
+		images : {thumbnail: "enokaojc.png", regular: "enoka.png"},
 		pic_index: "thumbnail"
 	}, 
 	{
 		name: "RVM",
-		images : {thumbnail: "rvmojc.jpg", regular: "rvm.jpg"},
+		images : {thumbnail: "rvmojc.png", regular: "rvm.jpg"},
 		pic_index: "thumbnail"
 	}, 
 	{

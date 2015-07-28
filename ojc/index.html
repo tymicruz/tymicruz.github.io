@@ -11,12 +11,11 @@
   <style type="text/css">
 
     .row{
-      background-color: rgb(200, 255, 200);
-      color: black;
+      background-color: orange;
       text-align: center;
-      border-color: black;
-      border-width: 10px;
-      height: 300px;
+      border-color: ;
+      border-width: 0px;
+      /*height: 300px;*/
       
     }
 
@@ -25,8 +24,26 @@
     }
 
     img {
-      height: 100%;
-      width: auto;
+ /*     height: 100%;
+      width: auto;*/
+    }
+
+    .small-image{
+       border-color: white;
+       border-width: 20px;
+      max-width: 500px;
+      max-height: 500px;
+       padding: 0;
+
+    }
+
+    .img-center{
+      margin: 0 auto;
+    }
+
+    .grid-block{
+
+      outline: 5px solid white;
     }
 
 
@@ -37,18 +54,24 @@
 
 <body ng-controller="OjcController as ojc">
 
-    <div class="row">
+    <img src="imgs/ojclogo.png">
 
-      <div ng-repeat="member in ojc.members" class="col-sm-4 col-xs-12">
-       
-        <button type="button" class="btn btn-warning" ng-click="ojc.ChangePic(member.name)">{{member.name}}</button>
-        
-        <div class="thumbnail img-container" >
-          <img class="img-responsive" ng-click="ojc.ChangePic(member.name)" id="{{member.name}}" ng-src="{{'imgs/' + member.images['thumbnail']}}"/>       
+    <div class="container-fluid" id="ojc-members" style="margin-top: 15px;">
+
+      <div class="row">
+
+        <div ng-repeat="member in ojc.members" class="col-sm-4 col-xs-12 grid-block">
+         
+          <button type="button" class="btn btn-warning" ng-click="ojc.ChangePic(member.name)"><span style="font-weight:bolder;letter-spacing: 14px; margin-right: -14px;">{{member.name}}</span></button>
+          
+          <div class="small-image thumbnail img-container img-center" >
+            <img class="" ng-click="ojc.ChangePic(member.name)" id="{{member.name}}" ng-src="{{'imgs/' + member.images['thumbnail']}}"/>       
+          </div>
+
         </div>
-
+      
       </div>
-    
+
     </div>
 
   <script type="text/javascript" src="js/angular.min.js"></script>
