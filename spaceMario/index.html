@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <title>CptS 483</title>
+    <meta charset="UTF-8" />
+    <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
+
+    <script type="text/javascript" src="js/game/ScreenWidget.js"></script>
+    <script type="text/javascript" src="js/game/Star.js"></script>
+    <script type="text/javascript" src="js/game/SpaceShip.js"></script>
+     <script type="text/javascript" src="js/game/Alien.js"></script>
+     <script type="text/javascript" src="js/game/Mario.js"></script>
+     <script type="text/javascript" src="js/game/Shell.js"></script>
+    <script type="text/javascript" src="js/game/StarGame.js"></script>
+    
+</head>
+<body id="body">
+<script>
+    $(document).ready(function(){
+        var game = new StarGame(document.getElementById("canvas"),
+        "images/ships.png", document.getElementById("scoreboard")
+        );
+        game.begin();
+    });
+</script>
+
+<div style="width: 500px; height: 500; display: inline;"><!--margin: 0 auto;-->
+    <canvas id="canvas" width="500" height="500">
+</div>
+
+<div style="width: 500px; height: 500; display: inline-block; padding: 0;"><!--margin: 0 auto;-->
+    <canvas id="scoreboard" width="500" height="500">
+</div>
+
+</canvas>
+</body>
+
+
+<!--<script type="text/javascript" src="js/test.js"></script>-->
+</html>
