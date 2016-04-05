@@ -56,7 +56,7 @@ function Alien(context, x, y)
         if(self.flashOn){
             self.flasher += 1;
 
-            if(self.flasher % 5 == 0){
+            if(self.flasher % 10 == 0){
                 self.flasher = 0;
 
                 if(self.show){

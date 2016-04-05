@@ -60,7 +60,7 @@ function StarGame(canvas, shipImageSrc, scoreboard)
         self.enemies.push(self.alien2);
         self.enemies.push(self.alien3);
 
-        self.widgets.push(self.mario);
+       // self.widgets.push(self.mario);
 
         
         //begin game
@@ -79,13 +79,17 @@ function StarGame(canvas, shipImageSrc, scoreboard)
         //render widgets
         for(var i = 0; i < self.enemies.length; i++)
         {
+          if(self.enemies[i].alive === false){
+            console.log("dead");
+                self.enemies.splice(i, 1);
+                i--;
+                continue;
+            }
+
             self.enemies[i].render();
             self.enemies[i].update();
 
-            if(self.enemies[i].alive === false){
-                self.enemies.splice(i, 1);
-                i--;
-            }
+            
         }
 
            for(var i = 0; i < self.enemyBullets.length; i++)
