@@ -32,7 +32,7 @@ function Shell(context, x, y, redshell)
 
     self.enemies = [];
 
-    console.log(context);
+  //  console.log(context);
 
     self.render = function (enemies)
     {
@@ -66,16 +66,17 @@ function Shell(context, x, y, redshell)
 
     self.update = function (enemies)
     {
-        
+        var points = 0;
         self.enemies = enemies;
+
 
         if(self.redshell === true && self.enemies.length > 0){
             //enemies[0].targeted = true;
 
             var d = Math.sqrt( (self.x-enemies[0].x)*(self.x-enemies[0].x) + (self.y-enemies[0].y)*(self.y-enemies[0].y) );
             var secret_sauce = (1/d) * 800;
-            console.log(secret_sauce);
-            self.speed = -secret_sauce;
+            //console.log(secret_sauce);
+            self.speed = secret_sauce;
 
             if(self.y > enemies[0].y){//below enemy targeted
                 self.y-=secret_sauce;
@@ -106,12 +107,16 @@ function Shell(context, x, y, redshell)
                 enemies[i].hit();
                 enemies[i].targeted = false;
                 self.alive = false;
+                points = 1;
+                break;
                 //self.y = maxY;
                 //self.speed = -1;
             }
         }
 
         self.checkBoundary();
+
+        return points;
     };
 
     self.checkBoundary = function()

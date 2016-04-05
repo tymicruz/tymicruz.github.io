@@ -17,7 +17,10 @@ function StarGame(canvas, shipImageSrc, scoreboard)
     self.enemies = Array();
     self.enemyBullets = Array();
     self.myBullets = Array();
+    self.score = 0;
+    self.streak = 0;
 
+    self.time = 0;
 
 
     //hide mouse
@@ -36,19 +39,81 @@ function StarGame(canvas, shipImageSrc, scoreboard)
 
     self.alien1 = new Alien(self.context, maxX/2 - 40, 10 + 2*80, true);
     self.mario = new Mario(self.context);
-    self.currentShell = new Shell(self.context, self.mario.x, self.mario.y - self.mario.ScaleHeight, false);
+    self.currentShell = new Shell(self.context, self.mario.x, self.mario.y - self.mario.scaleHeight, false);
+
+    self.timeTick = function(){
+      setTimeout(function(){
+        self.time+=1;
+        self.timeTick();
+      }, 1000);
+    }
+
+    self.beginLevel1 = function(){
+
+        self.scoreboardContext.fillStyle = "rgb(0, 20, 255)";
+        self.scoreboardContext.fillRect(0,0, maxX, maxY);
+        self.scoreboardContext.fillStyle = "rgb(255, 255, 255)";
+        self.scoreboardContext.fillText("Score:", 10, 50);
+        self.scoreboardContext.fillText(self.score.toString(), 10, 100);
+
+      setTimeout(function(){
+        self.context.clearRect(0, 0, maxX, maxY);
+        self.context.fillStyle = "black";
+        self.context.fillRect(0,0,maxX, maxY);
+        self.context.fillStyle = "lime";
+        self.context.textAlign = "center";
+        self.context.font = "48px sans-serif";
+        self.context.fillText("Level 1", 250, 250);
+      }, 0000);
+      setTimeout(function(){
+        self.context.clearRect(0, 0, maxX, maxY);
+        self.context.fillStyle = "black";
+        self.context.fillRect(0,0,maxX, maxY);
+        self.context.fillStyle = "lime";
+        self.context.textAlign = "center";
+        self.context.font = "48px sans-serif";
+      self.context.fillText("3...", 250, 250);
+      }, 1000);
+
+      setTimeout(function(){
+        self.context.clearRect(0, 0, maxX, maxY);
+        self.context.fillStyle = "black";
+        self.context.fillRect(0,0,maxX, maxY);
+        self.context.fillStyle = "lime";
+self.context.textAlign = "center";
+        self.context.font = "48px sans-serif";
+      self.context.fillText("2..", 250, 250);
+      }, 2000);
+
+      setTimeout(function(){
+        self.context.clearRect(0, 0, maxX, maxY);
+        self.context.fillStyle = "black";
+        self.context.fillRect(0,0,maxX, maxY);
+        self.context.fillStyle = "lime";
+        self.context.textAlign = "center";
+        self.context.font = "48px sans-serif";
+        self.context.fillText("1.", 250, 250);
+        
+      }, 3000);
+
+      setTimeout(function(){
+        self.timeTick();
+        self.begin();
+      }, 4000);
+    }
+
 
     self.begin = function()
     {
-      self.scoreboardContext.fillStyle = "rgb(0, 100, 255)";
-      self.scoreboardContext.fillRect(0, 0, maxX, maxY);
 
-      //setTimeout(function(){
+      //self.scoreboardContext.font = "48px serif";
+      //self.scoreboardContext.fillText("Hello world", 10, 50);
+
+      //self.scoreboardContext.fillStyle = "rgb(0, 100, 255)";
+      //self.scoreboardContext.fillRect(0, 0, maxX, maxY);
+
         self.init();
         self.renderLoop();
-      //}, 3000)
-        //self.init();
-        //self.renderLoop();
     };
 
     //resets game state
@@ -72,9 +137,38 @@ function StarGame(canvas, shipImageSrc, scoreboard)
         //clear canvas
         self.context.clearRect(0, 0, maxX, maxY);
 
+        self.scoreboardContext.clearRect(0, 0, maxX, maxY);
+        self.scoreboardContext.fillStyle = "rgb(0, 20, 255)";
+        self.scoreboardContext.fillRect(0,0, maxX, maxY);
+        self.scoreboardContext.fillStyle = "rgb(255, 255, 255)";
+        self.scoreboardContext.font = "48px sans-serif";
+        self.scoreboardContext.fillText("Score:", 10, 50);
+        self.scoreboardContext.fillText(self.score.toString(), 10, 100);
+        self.scoreboardContext.fillText("Time:", 10, 150);
+        self.scoreboardContext.fillText(self.time.toString(), 10, 200);
+
         //paint black
         self.context.fillStyle = "rgb(0, 0, 0)";
         self.context.fillRect(0, 0, maxX, maxY);
+
+        self.mario.update();
+        self.mario.render();
+        
+        self.currentShell.x = self.mario.x;
+        self.currentShell.y = self.mario.y - self.mario.scaleHeight;
+        self.currentShell.render(self.enemies);
+
+        if(self.enemies.length === 0){
+          //go to another level
+          self.alien3 = new Alien(self.context, 0, 10, true);
+          self.alien2 = new Alien(self.context, maxX - 80, 10 + 80, true);
+          self.alien1 = new Alien(self.context, maxX/2 - 40, 10 + 2*80, true);
+
+            self.enemies.push(self.alien1);
+        self.enemies.push(self.alien2);
+        self.enemies.push(self.alien3);
+          //return;
+        }
 
         //render widgets
         for(var i = 0; i < self.enemies.length; i++)
@@ -86,24 +180,24 @@ function StarGame(canvas, shipImageSrc, scoreboard)
                 continue;
             }
 
-            self.enemies[i].render();
+            
             self.enemies[i].update();
-
+            self.enemies[i].render();
             
         }
 
            for(var i = 0; i < self.enemyBullets.length; i++)
         {
-            self.enemyBullets[i].render();
+            
             self.enemyBullets[i].update();
-
+            self.enemyBullets[i].render();
 
         }
 
            for(var i = 0; i < self.myBullets.length; i++)
         {
             self.myBullets[i].render(self.enemies);
-            self.myBullets[i].update(self.enemies);
+            self.score+=self.myBullets[i].update(self.enemies);
 
             if(self.myBullets[i].alive === false){
                 self.myBullets.splice(i, 1);
@@ -111,22 +205,12 @@ function StarGame(canvas, shipImageSrc, scoreboard)
             }
         }
 
-        self.mario.render();
-        self.mario.update();
-        self.currentShell.x = self.mario.x;
-        self.currentShell.y = self.mario.y - self.mario.ScaleHeight;
-        self.currentShell.render(self.enemies);
-
-
-
 
         window.requestAnimationFrame(self.renderLoop);
     };
 
     self.canvasMouseMoved = function(evt)
     {
-        //update interested parties
-       // self.playerShip.mouseMoved(evt);
         self.mario.mouseMoved(evt);
     };
 

@@ -12,13 +12,13 @@ function Mario(context)
     self.TrueWidth = 21;
     self.TrueHeight = 36;
     
-    self.ScaleWidth = 30;
-    self.ScaleHeight = 50;
+    self.scaleWidth = 30;
+    self.scaleHeight = 50;
     self.switchFrame = 0;
     self.speed = 10;
 
     self.x = maxX / 2;
-    self.y = maxY - self.ScaleHeight;
+    self.y = maxY - self.scaleHeight;
 
 
     self.jump = true;
@@ -26,10 +26,10 @@ function Mario(context)
     self.marioJumpImage.src = "images/marioJump.png";
     self.imageJumpIndex = 6;
     self.imageJumpOffset = 26;
-    self.TrueJumpWidth = 26;
-    self.TrueJumpHeight = 35;
-    self.ScaleJumpWidth = 30;
-    self.ScaleJumpHeight = 50;
+    self.trueJumpWidth = 26;
+    self.trueJumpHeight = 35;
+    self.scaleJumpWidth = 30;
+    self.scaleJumpHeight = 50;
     self.switchJumpFrame = 0;
 
 
@@ -61,12 +61,12 @@ function Mario(context)
                     self.context.drawImage(self.marioImage,       //source image
                         self.imageIndex * self.imageOffset,  //sprite x offset
                         0,                                   //sprite y offset
-                        self.TrueWidth,                          //sprite width
-                        self.TrueHeight,                         //sprite height
+                        self.trueWidth,                          //sprite width
+                        self.trueHeight,                         //sprite height
                         self.x,                              //destination x
                         self.y,                              //destination y
-                        self.ScaleWidth,                          //destination width (for scaling)
-                        self.ScaleHeight); 
+                        self.scaleWidth,                          //destination width (for scaling)
+                        self.scaleHeight); 
 
                     return;
                 }
@@ -76,12 +76,12 @@ function Mario(context)
             self.context.drawImage(self.marioJumpImage,       //source image
             self.imageJumpIndex * self.imageJumpOffset,  //sprite x offset
             0,                                   //sprite y offset
-            self.TrueJumpWidth,                          //sprite width
-            self.TrueJumpHeight,                         //sprite height
+            self.trueJumpWidth,                          //sprite width
+            self.trueJumpHeight,                         //sprite height
             self.x,                              //destination x
             self.y,                              //destination y
-            self.ScaleJumpWidth,                          //destination width (for scaling)
-            self.ScaleJumpHeight);  
+            self.scaleJumpWidth,                          //destination width (for scaling)
+            self.scaleJumpHeight);  
 
             return;
         }
@@ -105,8 +105,8 @@ function Mario(context)
             self.TrueHeight,                         //sprite height
             self.x,                              //destination x
             self.y,                              //destination y
-            self.ScaleWidth,                          //destination width (for scaling)
-            self.ScaleHeight);                        //destination height (for scaling)
+            self.scaleWidth,                          //destination width (for scaling)
+            self.scaleHeight);                        //destination height (for scaling)
     };
 
     self.update = function(){
@@ -138,9 +138,11 @@ function Mario(context)
 
    self.mouseMoved = function(evt)
    {
-    
-    self.x = evt.clientX - self.ScaleWidth / 2;
-    if(evt.clientY - self.ScaleHeight / 2 > maxY - 100)
-    {self.y = evt.clientY - self.ScaleHeight / 2;}
+   // console.log(evt);
+    //self.x = evt.clientX - self.scaleWidth / 2;
+   // if(evt.clientY + self.scaleHeight <= maxY)
+   // {self.y = evt.clientY - self.scaleHeight / 2;}
+   self.x = evt.x - (self.scaleWidth / 2) - evt.target.offsetLeft;
+   //self.y = evt.y - (self.scaleHeight / 2);// - evt.offsetY;
 }
 }
