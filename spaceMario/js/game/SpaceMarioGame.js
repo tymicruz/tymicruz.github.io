@@ -27,6 +27,8 @@ Requires: ScreenWidget.js
 
             self.shellsThrown = 0;
             self.shellsHit = 0;
+            self.begin = false;
+            self.stars = Array();
 
 
     //hide mouse
@@ -83,7 +85,7 @@ Requires: ScreenWidget.js
 
     self.drawScoreboard = function(){
       self.scoreboardContext.clearRect(0, 0, maxX, maxY);
-      self.scoreboardContext.fillStyle = "rgb(0, 20, 255)";
+      self.scoreboardContext.fillStyle = "rgb(0, 0, 0)";
       self.scoreboardContext.fillRect(0,0, maxX, maxY);
       self.scoreboardContext.fillStyle = "rgb(255, 255, 255)";
       self.scoreboardContext.font = "48px sans-serif";
@@ -231,7 +233,7 @@ self.drawScoreboard();
 
     self.beginLevel2 = function(){
 
-self.drawScoreboard();
+  self.drawScoreboard();
 
       setTimeout(function(){
         self.context.clearRect(0, 0, maxX, maxY);
@@ -348,12 +350,30 @@ self.drawScoreboard();
 
 
 
+    self.displayStart = function(){
+        self.context.clearRect(0, 0, maxX, maxY);
+        self.context.fillStyle = "black";
+        self.context.fillRect(0,0,maxX, maxY);
+        self.context.fillStyle = "lime";
+        self.context.textAlign = "center";
+        self.context.font = "48px sans-serif";
+        self.context.fillText("Click To Play", 250, 250);
+
+        self.drawScoreboard();
+
+        for(var i = 0; i < 100; i++){
+          self.stars.push(Star.makeStar(self.context, Math.floor(Math.random() * (4 - 1)) + 1, Math.floor(Math.random() * (15 - 4)) + 4));
+        }
+    }
+
+
+
       self.renderLoop = function()
       {
         //clear canvas
         self.context.clearRect(0, 0, maxX, maxY);
 
-self.drawScoreboard();
+        self.drawScoreboard();
 
         //paint black
         self.context.fillStyle = "rgb(0, 0, 0)";
@@ -476,6 +496,11 @@ self.drawScoreboard();
             }
           }
 
+          for(var i = 0; i < self.stars.length; i++){
+            self.stars[i].update();
+            self.stars[i].render();
+          }
+
 
           window.requestAnimationFrame(self.renderLoop);
         };
@@ -487,6 +512,13 @@ self.drawScoreboard();
 
         self.canvasClicked = function(evt)
         {
+          if(self.begin === false){
+            self.begin = true;
+            self.beginLevel1();
+            return;
+          }
+
+
           self.mario.jumpMario();
           var random = Math.floor(Math.random() * 2);
 

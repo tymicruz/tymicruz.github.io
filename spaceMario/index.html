@@ -17,17 +17,17 @@
 
     
 </head>
-<body id="body">
+<body id="body" style="background-image: url('images/space.jpg')">
 <script>
     $(document).ready(function(){
         var game = new StarGame(document.getElementById("canvas"),
         "images/ships.png", document.getElementById("scoreboard")
         );
-        game.beginLevel1();
+        game.displayStart();
     });
 </script>
 
-<h1 style="text-align: center;">SPACE MARIO</h1>
+<h1 style="text-align: center; color: white;">SPACE MARIO</h1>
 
 <div style="width: 1010px;margin: 0 auto;">
 

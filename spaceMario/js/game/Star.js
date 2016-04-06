@@ -7,6 +7,7 @@ function Star(context)
     var self = this;
     self.speed = 1;
     self.width = 2;
+    self.color = "white";
 
     self.render = function ()
     {
@@ -30,7 +31,7 @@ function Star(context)
             self.y = 0;
 
             //change color for next go around
-            self.changeColor();
+           // self.changeColor();
 
             //go somewhere else on the star field;
             if(maxX != undefined)
@@ -55,9 +56,9 @@ function Star(context)
 Star.makeStar = function(context, width, speed)
 {
     var someStar = new Star(context);
-    var red = Math.floor(Math.random() * 255);
-    var green = Math.floor(Math.random() * 255);
-    var blue = Math.floor(Math.random() * 255);
+    var red = 255;//Math.floor(Math.random() * 255);
+    var green = 255;//Math.floor(Math.random() * 255);
+    var blue = 255;//Math.floor(Math.random() * 255);
     someStar.color = "rgb(" + red + ", " + green + ", " + blue + ")";
     someStar.speed = speed;
     someStar.width = width;
