@@ -34,11 +34,19 @@ function Mario(context)
     self.scaleJumpHeight = 50;
     self.switchJumpFrame = 0;
 
+    self.rectangle = {
+      x: self.x,
+      y: self.y,
+      w: self.scaleWidth - 4,
+      h: self.scaleHeight - 2
+    }
+
 
     self.render = function()
     {
 
         update:
+        
 
         if(self.jump){
             self.switchJumpFrame += 1;
@@ -75,6 +83,8 @@ function Mario(context)
 
             }
 
+            
+
             self.context.drawImage(self.marioJumpImage,       //source image
             self.imageJumpIndex * self.imageJumpOffset,  //sprite x offset
             0,                                   //sprite y offset
@@ -98,6 +108,10 @@ function Mario(context)
             self.switchFrame = 0;
         }
 
+        // self.context.strokeStyle = "rgb(0, 255, 0)";
+        // self.context.lineWidth = 3;
+        // self.context.strokeRect(self.rectangle.x, self.rectangle.y, self.rectangle.w, self.rectangle.h);
+
       
         self.context.drawImage(self.marioImage,       //source image
             self.imageIndex * self.imageOffset,  //sprite x offset
@@ -111,6 +125,9 @@ function Mario(context)
     };
 
     self.update = function(){
+
+        self.rectangle.x= self.x + 4;
+        self.rectangle.y= self.y + 2;
       if(self.lives <= 0){
         self.alive = false;
       }

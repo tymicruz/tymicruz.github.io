@@ -41,10 +41,24 @@ function Alien(context, x, y)
         y: self.y + (self.scaleHeight/2)
     }
 
+
+    self.shoot = false;
+    self.shootTick = 0;
+    self.shootMod = Math.floor(Math.random() * (200 - 50)) + 50;
+
     self.render = function ()
     {
         self.switchFrame = self.switchFrame + 1;
         self.switchDirection = self.switchDirection + 1;
+        self.shootTick+= 1;
+
+        if(self.shootTick % self.shootMod == 0){
+            self.shoot = true;
+            self.shootMod = Math.floor(Math.random() * (200 - 50)) + 50;
+            self.shootTick = 0;
+        }else{
+            self.shoot = false;
+        }
 
         if(self.switchFrame % 10 == 0){
             //change image offset
@@ -109,10 +123,19 @@ function Alien(context, x, y)
 
     self.update = function ()
     {
+        //if(self.free) return;
+
         self.x +=  self.speed;
         self.checkBoundary(); 
 
         //update returns bullets  
+
+        if(self.shoot == true){
+            //self.free = true;
+            return new Mushroom(self.context, self.x + self.scaleWidth/2, self.y + self.scaleHeight /2);
+        }else{
+            return null;
+        }
     };
 
     self.checkBoundary = function()

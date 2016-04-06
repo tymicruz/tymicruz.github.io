@@ -62,8 +62,23 @@ Requires: ScreenWidget.js
         self.context.fillText("You Win!", 250, 250);
         var rating = Math.ceil((((self.score/self.time)*((self.shellsHit/self.shellsThrown))*self.mario.lives)*1000)).toString();
 
-        self.context.fillText(rating, 250, 300);
+        self.context.fillText("Rating: "+rating, 250, 300);
 
+    }
+
+      self.gameOver = function(){
+      self.time = self.timeStop;
+
+        self.context.clearRect(0, 0, maxX, maxY);
+        self.context.fillStyle = "black";
+        self.context.fillRect(0,0,maxX, maxY);
+        self.context.fillStyle = "lime";
+        self.context.textAlign = "center";
+        self.context.font = "48px sans-serif";
+        self.context.fillText("Game Over", 250, 250);
+        var rating = "0";
+        self.context.fillStyle = "red";
+        self.context.fillText("Rating: "+rating, 250, 300);
     }
 
     self.drawScoreboard = function(){
@@ -344,6 +359,11 @@ self.drawScoreboard();
         self.context.fillStyle = "rgb(0, 0, 0)";
         self.context.fillRect(0, 0, maxX, maxY);
 
+        if(self.mario.lives <= 0){
+          self.gameOver();
+          return;
+        }
+
         self.mario.update();
         self.mario.render();
         
@@ -414,7 +434,13 @@ self.drawScoreboard();
             continue;
           }
 
-          self.enemies[i].update();
+          var mushroom = self.enemies[i].update();
+          if(mushroom){
+            self.enemyBullets.push(mushroom);
+          }
+
+
+
           self.enemies[i].render();      
         }
 
@@ -422,8 +448,14 @@ self.drawScoreboard();
         for(var i = 0; i < self.enemyBullets.length; i++)
         {
 
-          self.enemyBullets[i].update();
+          self.enemyBullets[i].update(self.mario);
           self.enemyBullets[i].render();
+
+          if(self.enemyBullets[i].alive === false){
+
+            self.enemyBullets.splice(i, 1);
+            i--;
+          }
 
         }
 
