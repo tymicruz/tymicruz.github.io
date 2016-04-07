@@ -362,7 +362,10 @@ self.drawScoreboard();
         self.drawScoreboard();
 
         for(var i = 0; i < 100; i++){
-          self.stars.push(Star.makeStar(self.context, Math.floor(Math.random() * (4 - 1)) + 1, Math.floor(Math.random() * (15 - 4)) + 4));
+          self.stars.push(Star.makeStar(self.scoreboardContext, Math.floor(Math.random() * (4 - 1)) + 1, Math.floor(Math.random() * (15 - 4)) + 4, true)); 
+        }
+             for(var i = 0; i < 50; i++){
+          self.stars.push(Star.makeStar(self.context, Math.floor(Math.random() * (4 - 1)) + 1, Math.floor(Math.random() * (15 - 4)) + 4, false)); 
         }
     }
 

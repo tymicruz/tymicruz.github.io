@@ -110,7 +110,7 @@ function Alien(context, x, y)
             self.scaleHeight); 
 
            self.context.strokeStyle = "rgb(255, 0, 0)";
-           self.context.lineWidth = 1;
+           self.context.lineWidth = 4;
            self.circle.radius= (self.scaleWidth  / 2) - 10;
         self.circle.x=self.x + (self.scaleWidth/2);
         self.circle.y= self.y + (self.scaleHeight/2);
