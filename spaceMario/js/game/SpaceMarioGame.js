@@ -163,12 +163,12 @@ self.drawScoreboard();
 
       setTimeout(function(){
         self.time = self.timeStop;
-        self.alien3 = new Alien(self.context, 0, 10, true);
-        self.alien2 = new Alien(self.context, maxX - 80, 10 + 80, true);
-        self.alien1 = new Alien(self.context, maxX/2 - 40, 10 + 2*80, true);
+        // self.alien3 = new Alien(self.context, 0, 10, true);
+        // self.alien2 = new Alien(self.context, maxX - 80, 10 + 80, true);
+        // self.alien1 = new Alien(self.context, maxX/2 - 40, 10 + 2*80, true);
         //self.enemies.push(self.alien1);
         //self.enemies.push(self.alien2);
-        self.enemies.push(self.alien3);
+        self.enemies.push(new Bowser(self.context, maxX - 80, 10 + 80, true));
         self.pause = false;
         self.renderLoop();
       }, 4000);
@@ -399,10 +399,15 @@ self.drawScoreboard();
           self.pause = true;
 
           self.timeStop = self.time;
-          self.alien3 = new Alien(self.context, 0, 10, true);
-          self.alien2 = new Alien(self.context, maxX - 80, 10 + 80, true);
-          self.alien1 = new Alien(self.context, maxX/2 - 40, 10 + 2*80, true);
 
+        //   if(self.level < 4)
+        //  {
+        //   self.alien3 = new Alien(self.context, 0, 10, true);
+        //   self.alien2 = new Alien(self.context, maxX - 80, 10 + 80, true);
+        //   self.alien1 = new Alien(self.context, maxX/2 - 40, 10 + 2*80, true);
+        // }else{
+
+        // }
 
           //clear enemy's bullets from previous level
           for(var i = 0; i < self.enemyBullets.length; i++)
