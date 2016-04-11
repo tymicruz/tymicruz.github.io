@@ -77,10 +77,10 @@ function Bowser(context, x, y)
           self.circle.radius= (self.scaleWidth  / 2) - 10;
         self.circle.x=self.x + (self.scaleWidth/2);
        self.circle.y= self.y + (self.scaleHeight/2);
-       self.context.beginPath();
- self.context.arc(self.circle.x, self.circle.y, self.circle.radius, 0, 2 * Math.PI, false);
+      // self.context.beginPath();
+ //self.context.arc(self.circle.x, self.circle.y, self.circle.radius, 0, 2 * Math.PI, false);
            
-                      self.context.stroke();
+   //                   self.context.stroke();
          // self.context.strokeRect(self.x, self.y, self.scaleWidth, self.scaleHeight -10);
          
     };
