@@ -1,4 +1,4 @@
- A webpage I made to showcase my friends when we called ourselves the Orange Juice Crew aka OJC ... (lol) 
+ A webpage I made to explore HTLM/CSS/JS and Mshowcase my friends when we called ourselves the Orange Juice Crew aka OJC ... (lol)
 
  [tymicruz.github.io/ojc](https://tymicruz.github.io/ojc/)
 
